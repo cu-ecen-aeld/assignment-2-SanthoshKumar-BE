@@ -1,11 +1,18 @@
+CC = gcc
+CFLAGS =
+INCLUDES =
+LDFLAGS =
+
 SRC := autotest-validate.c autotest-validate-main.c
-TARGET = autotest-validate
 OBJS := $(SRC:.c=.o)
+TARGET = autotest-validate
 
 all: $(TARGET)
 
-$(TARGET) : $(OBJS)
+$(TARGET): $(OBJS)
 	$(CC) $(CFLAGS) $(INCLUDES) $(OBJS) -o $(TARGET) $(LDFLAGS)
 
 clean:
 	-rm -f *.o $(TARGET) *.elf *.map
+
+.PHONY: all clean
